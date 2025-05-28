@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Theresia Tarianingsih</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        .typewriter::after {
+        content: '|';
+        animation: blink 1s infinite;
+        color: #3B3B1A;
+        margin-left: 5px;
+        }
+
+        @keyframes blink {
+        0%, 100% { opacity: 1; }
+        50% { opacity: 0; }
+        }
+    </style>
+  </head>
+  <body class="font-sans bg-white text-gray-800">
+    <!-- Navigation -->
+    <nav class="flex justify-center space-x-6 p-6 text-[20px] font-semibold" style="color: #84842D;">
+        <a href="#" class="hover:underline">about</a>
+        <a href="#" class="hover:underline">experience</a>
+        <a href="#" class="hover:underline">project</a>
+    </nav>
+    <!-- Main Section -->
+    <main class="text-center px-4" style="color: #F3F3F3;">
+        <h1 id="typewriter" class="text-[60px] font-bold mb-6 typewriter" style="color: #3B3B1A;"></h1>
+        <div class="flex justify-center mb-4">
+            <img src="static/images/Hero.png" alt="Illustration" class="rounded-xl w-full max-w-xl shadow-md" />
+        </div>
+        <p class="text-lg max-w-2xl mx-auto leading-relaxed" style="color: #84842D;">
+            My name is <span class="font-semibold">Theresia Tarianingsih</span>,
+            a second year <span class="font-semibold">Information System</span> student at
+            <span class="font-semibold">Universitas Indonesia</span> who is
+            like to seeking more about technology
+        </p>
+
+        <!-- Social Icons -->
+        <div class="flex justify-center space-x-6 mt-6">
+        <a href="https://www.linkedin.com/in/theretari/">
+            <img src="static/images/linkedin.svg" alt="LinkedIn" class="w-6 h-6"  />
+        </a>
+        <a href="http://instagram.com/theretarii/">
+            <img src="static/images/ig.svg" alt="Instagram" class="w-6 h-6"  />
+        </a>
+        <a href="https://docs.google.com/document/d/1iAJb32HtsQde_NAqkVesTVOIlko0o2jKFrtZBniKCss/edit?usp=sharing">
+            <img src="static/images/cv.svg" alt="CV" class="w-6 h-6"  />
+        </a>
+        <a href="mailto:theresia@ristek.cs.ui.ac.id">
+            <img src="static/images/email.svg" alt="Email" class="w-6 h-6"  />
+        </a>
+        </div>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center mt-10 text-xs" style="color: #84842D;">
+      <p>created by Theresia Tarianingsih © 2025</p>
+      <p>Last updated: May 28, 2025</p>
+    </footer>
+
+    <script>
+        const words = ['Hello', 'Hi', 'Halo', 'Hola', 'Bonjour', 'Ciao', 'こんにちは', '안녕하세요', 'Привет'];
+        let currentWord = 0;
+        let currentChar = 0;
+        let isDeleting = false;
+        const typeSpeed = 120;
+        const deleteSpeed = 80;
+        const delayBetweenWords = 1200;
+
+        const typewriterEl = document.getElementById('typewriter');
+
+        function type() {
+        const word = words[currentWord];
+        if (isDeleting) {
+            currentChar--;
+            typewriterEl.textContent = word.substring(0, currentChar);
+        } else {
+            currentChar++;
+            typewriterEl.textContent = word.substring(0, currentChar);
+        }
+
+        if (!isDeleting && currentChar === word.length) {
+            isDeleting = true;
+            setTimeout(type, delayBetweenWords);
+        } else if (isDeleting && currentChar === 0) {
+            isDeleting = false;
+            currentWord = (currentWord + 1) % words.length;
+            setTimeout(type, 300);
+        } else {
+            setTimeout(type, isDeleting ? deleteSpeed : typeSpeed);
+        }
+        }
+
+        type();
+    </script>
+  </body>
+</html>
